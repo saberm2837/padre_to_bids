@@ -17,4 +17,13 @@ You will also need the following two repositories:
 - [`padre`](https://github.com/azraq27/padre)
 - [`neural`](https://github.com/azraq27/neural)
 
-## Repository Structure
+## Output Structure (BIDS)
+bids_data/
+├── sub-01/
+│   └── ses-01/
+│       ├── anat/
+│       │   ├── sub-01_ses-01_T1w.nii.gz
+│       │   └── sub-01_ses-01_T1w.json
+│       └── func/
+│           ├── sub-01_ses-01_task-rest_bold.nii.gz
+│           └── sub-01_ses-01_task-rest_bold.json
