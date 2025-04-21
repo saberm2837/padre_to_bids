@@ -1,4 +1,4 @@
-# padre_to_bids
+# 1. padre_to_bids
 
 This repository provides a Jupyter notebook to convert fMRI datasets from the **PADRE format** (as used in [azraq27/padre](https://github.com/azraq27/padre)) into the **BIDS format**, making the data compatible with modern tools like [fMRIPrep](https://fmriprep.org/).
 
@@ -18,6 +18,7 @@ You will also need the following two repositories:
 - [`neural`](https://github.com/azraq27/neural)
 
 ## Output Structure (BIDS)
+<pre>
 bids_data/
 ├── sub-01/
 │   └── ses-01/
@@ -27,3 +28,6 @@ bids_data/
 │       └── func/
 │           ├── sub-01_ses-01_task-rest_bold.nii.gz
 │           └── sub-01_ses-01_task-rest_bold.json
+</pre>
+
+# 2. Data preprocessing step
