@@ -63,3 +63,36 @@ sbatch fmriprep_sub98.sh
 - Log files (.out, .err) are saved under the logs/ folder.
 ### 5. Post-processing:
 - If successful, the subject’s temporary working directory is automatically deleted to save space.
+
+# 3. Resting state functional connectivity analysis
+
+This repository provides example code for processing resting-state fMRI CIFTI data, performing denoising and band-pass filtering, extracting parcel-wise timeseries using the Gordon333 atlas, and computing functional connectivity matrices.  
+The pipeline includes:
+- Loading preprocessed CIFTI fMRI data and corresponding confound regressors
+- Extracting the repetition time (TR) automatically from the BIDS sidecar JSON
+- Denoising using linear regression and band-pass filtering
+- Extracting mean timeseries from Gordon333 brain atlas parcels
+- Computing and visualizing functional connectivity matrices
+
+ ## Requirements
+- Python 3.8+
+- Required packages: `nibabel`, `numpy`, `pandas`, `nilearn`, `scipy`, `matplotlib`
+
+ ## Usage
+ ### 1. Prepare Input Files:
+ - Preprocessed CIFTI fMRI file (e.g., `sub-01_ses-01_task-rest_bold.dtseries.nii`)
+ - Confounds file (e.g., `sub-01_ses-01_task-rest_desc-confounds_timeseries.tsv`)
+ - Sidecar JSON file containing `"RepetitionTime"` metadata (e.g., `sub-01_ses-01_task-rest_bold.json`)
+ - Gordon333 atlas file (download from [`BALSA`](https://balsa.wustl.edu/file/976Nr))
+ - Gordon333 lookup table (download from [`here`](https://github.com/brainspaces/gordon333/blob/master/gordon333NodeNames.txt) and convert to CSV)
+ ### 2. Steps Performed:
+ - Load the CIFTI file and confounds file.
+ - Automatically extract the TR value from the BIDS JSON sidecar.
+ - Select motion and global signal confound regressors.
+ - Denoise and band-pass filter the timeseries (`0.01–0.1 Hz`).
+ - Extract the mean timeseries from each Gordon333 parcel.
+ - Compute the correlation-based functional connectivity matrix.
+ - Save the timeseries and visualize the connectivity matrix.
+ ### 3. Output:
+  - CSV file of parcel-wise timeseries: `subjectID_sessionID_parcel_timeseries.csv`
+  - PNG file of the connectivity matrix visualization.
